@@ -1,0 +1,39 @@
+﻿@model MVC.ViewModels.Basket
+
+<h2>Basket</h2>
+
+@if (Model.Data.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-controller="Basket" asp-action="Delete" method="post">
+                            <input type="hidden" name="catalogItemId" value="@item.Id" />
+                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>Your basket is empty</div>
+}
+
+<div>
+    <a asp-controller="Catalog" asp-action="Index">Back to catalog</a>
+</div>

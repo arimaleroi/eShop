@@ -1,0 +1,16 @@
+﻿@model CatalogItem
+
+
+<form>
+
+    <img class="esh-catalog-thumbnail" src="@Model.PictureFileName" />
+
+    <div class="esh-catalog-title">
+        <span>@Model.Title</span>
+    </div>
+    <div class="esh-catalog-price">
+        <span>@Model.Price.ToString("N2")</span>
+    </div>
+
+    <input type="hidden" asp-for="@Model.Id" name="id" />
+</form>
